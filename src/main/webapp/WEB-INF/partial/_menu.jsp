@@ -47,9 +47,12 @@
                         </c:choose></li> --%>
                 </c:if>
             </ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav gap-3">
                 <c:choose>
                     <c:when test="${not empty sessionScope.utilisateur}">
+                        <li class="nav-item"><a class="nav-link"
+                            href="${pageContext.request.contextPath}/panier"
+                        ><i class="fa-solid fa-cart-shopping"></i></a></li>
                         <li class="nav-item dropdown"><a
                             class="nav-link dropdown-toggle d-flex gap-2 align-items-center"
                             href="#" role="button"
