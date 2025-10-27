@@ -35,7 +35,7 @@ public class Connexion extends HttpServlet {
 		if (request.getServletPath().contains("deconnexion")) {
 			var session = request.getSession();
 			session.invalidate();
-			response.sendRedirect(request.getContextPath() + "/connexion");
+			response.sendRedirect(request.getContextPath() + "/");
 			   return;			
 		}
 		
@@ -58,7 +58,6 @@ public class Connexion extends HttpServlet {
 			
 			//request.getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 			response.sendRedirect(request.getContextPath() + "/accueil");
-			
 		}else {
             
             request.setAttribute("erreur", "Utilisateur introuvable. Vérifiez vos identifiants.");
