@@ -8,7 +8,7 @@ public class MySqlConnection {
 
 	static {
 		String username = "root";
-		String password = "root";
+		String password = "password";
 		String url = "jdbc:mysql://localhost:3306/bdd_projet_fil_rouge_room_1";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

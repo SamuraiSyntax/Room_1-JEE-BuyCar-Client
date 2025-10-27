@@ -34,11 +34,7 @@
             <div class="tab-pane fade show active" id="login-tab-pane"
                 role="tabpanel" aria-labelledby="login-tab" tabindex="0"
             >
-                <form
-                    action="${pageContext.request.contextPath}/connexion"
-                    method="post"
-                    class="p-4 border rounded shadow-sm bg-light w-50 mx-auto"
-                >
+                <form action="${pageContext.request.contextPath}/connexion" method="post" class="p-4 border rounded shadow-sm bg-light w-50 mx-auto">
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control"
                             id="emailConnexion" name="email"
@@ -65,10 +61,7 @@
                 tabindex="0"
             >
                 <form
-                    action="${pageContext.request.contextPath}/inscription"
-                    method="post"
-                    class="p-4 border rounded shadow-sm bg-light w-50 mx-auto"
-                >
+                    action="${pageContext.request.contextPath}/inscription" method="post" class="p-4 border rounded shadow-sm bg-light w-50 mx-auto" >
                     <div class="row g-3 mb-3">
                         <div class="col">
                             <div class="form-floating">

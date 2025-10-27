@@ -111,7 +111,7 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 		Connection connection = MySqlConnection.getConnection();
 		if (connection != null) {
 			try {
-				String sql = "SELECT * FROM utilisateur WHERE email = ? AND mot_de_passe = ?";
+				String sql = "SELECT * FROM Utilisateur WHERE email = ? AND mot_de_passe = ?";
 				PreparedStatement statement = connection.prepareStatement(sql);
 				statement.setString(1, email);
 				statement.setString(2, motDePasse);
