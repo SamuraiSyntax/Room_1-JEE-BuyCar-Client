@@ -19,7 +19,7 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 		if (connection != null) {
 			try {
 				Statement statement = connection.createStatement();
-				String select = "SELECT * FROM Utilisateur";
+				String select = "SELECT * FROM utilisateur";
 				ResultSet resultSet = statement.executeQuery(select);
 				utilisateurs = new ArrayList<Utilisateur>();
 				while (resultSet.next()) {
@@ -79,7 +79,7 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 				statement.setString(2, model.getPrenom());
 				statement.setString(3, model.getEmail());
 				statement.setString(4, model.getPassword());
-				statement.setInt(5, model.getRole());
+				statement.setInt(5, 2);
 
 				statement.executeUpdate();
 				ResultSet result = statement.getGeneratedKeys();

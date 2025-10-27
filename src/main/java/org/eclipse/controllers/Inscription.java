@@ -32,7 +32,7 @@ public class Inscription extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/").forward(request, response);
 
 	}
 
@@ -53,7 +53,7 @@ public class Inscription extends HttpServlet {
 
 			request.setAttribute("erreur", "Tous les champs sont obligatoires.");
 
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/").forward(request, response);
 
 			return;
 		}
@@ -65,16 +65,16 @@ public class Inscription extends HttpServlet {
 
 			if (savedUser != null) {
 				// Succès → redirection vers la page de connexion
-				response.sendRedirect(request.getContextPath() + "/accueil.jsp");
+				response.sendRedirect(request.getContextPath() + "/");
 			} else {
 				// Échec d’insertion → retour au formulaire
 				request.setAttribute("erreur", "Une erreur est survenue lors de l’inscription.");
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				request.getRequestDispatcher("/").forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("erreur", "Erreur serveur : " + e.getMessage());
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/").forward(request, response);
 		}
 	}
 }

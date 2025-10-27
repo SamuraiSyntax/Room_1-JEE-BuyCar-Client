@@ -31,7 +31,7 @@
                                 >Accueil</a>
                             </c:otherwise>
                         </c:choose></li>
-                    <li class="nav-item"><c:choose>
+                    <%-- <li class="nav-item"><c:choose>
                             <c:when
                                 test="${pageContext.request.servletPath == '/WEB-INF/profil.jsp'}"
                             >
@@ -44,7 +44,7 @@
                                     href="${pageContext.request.contextPath}/profil"
                                 >Mon profil</a>
                             </c:otherwise>
-                        </c:choose></li>
+                        </c:choose></li> --%>
                 </c:if>
             </ul>
             <ul class="navbar-nav">
