@@ -26,7 +26,7 @@
                                     data-bs-target="#collapse${status.index}"
                                     aria-expanded="false"
                                     aria-controls="collapse${status.index}"
-                                >${v.marque}${v.modele} à
+                                >${v.marque} - ${v.modele} à
                                     ${v.prix}&euro;</button>
                             </h2>
                             <div id="collapse${status.index}"
@@ -51,13 +51,30 @@
                                         <li><strong>Description
                                                 :</strong> ${v.description}</li>
                                         <li><strong>Date
-                                                d'ajout :</strong> ${v.dateAjoutFormatee}</li>
+                                                d'ajout :</strong>
+                                            ${v.dateAjoutFormatee}</li>
                                     </ul>
                                     <div class="text-end mt-3">
-                                        <a
-                                            href="${pageContext.request.contextPath}/panier/add?id=${v.idVoiture}"
-                                            class="btn btn-outline-primary btn-sm"
-                                        > Ajouter au panier</a>
+                                        <form
+                                            action="${pageContext.request.contextPath}/panier"
+                                            method="post"
+                                            class="d-inline"
+                                        >
+                                            <input type="hidden"
+                                                name="id"
+                                                value="${v.idVoiture}"
+                                            > <input type="hidden"
+                                                name="action"
+                                                value="add"
+                                            >
+                                            <button type="submit"
+                                                class="btn btn-sm btn-success"
+                                            >
+                                                <i
+                                                    class="fa-solid fa-cart-plus"
+                                                ></i> Ajouter au panier
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

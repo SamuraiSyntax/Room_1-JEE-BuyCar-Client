@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter({ "/accueil", "/profil" })
+@WebFilter({ "/accueil", "/profil", "/panier" })
 public class AuthFilter extends HttpFilter implements Filter {
 	private static final long serialVersionUID = 1L;
 
@@ -29,9 +29,7 @@ public class AuthFilter extends HttpFilter implements Filter {
 		boolean isLoggedIn = (session != null && session.getAttribute("utilisateur") != null);
 		String authURI = req.getContextPath() + "/";
 
-		boolean isAuthRequest = req.getRequestURI().equals(authURI);
-
-		if (isLoggedIn || isAuthRequest) {
+		if (isLoggedIn) {
 			chain.doFilter(request, response);
 		} else {
 			res.sendRedirect(authURI);
