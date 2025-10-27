@@ -1,0 +1,33 @@
+# =====================
+# Eclipse
+# =====================
+.classpath
+.project
+.settings/
+bin/
+.apt_generated/
+.factorypath
+.springBeans
+
+# =====================
+# Maven / Build
+# =====================
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# =====================
+# Logs & Temp
+# =====================
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# =====================
+# IDEs divers
+# =====================
+.idea/
+.vscode/
+out/

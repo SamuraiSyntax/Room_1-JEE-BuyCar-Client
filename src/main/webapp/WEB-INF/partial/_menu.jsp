@@ -31,7 +31,7 @@
                                 >Accueil</a>
                             </c:otherwise>
                         </c:choose></li>
-                    <li class="nav-item"><c:choose>
+                    <%-- <li class="nav-item"><c:choose>
                             <c:when
                                 test="${pageContext.request.servletPath == '/WEB-INF/profil.jsp'}"
                             >
@@ -44,12 +44,29 @@
                                     href="${pageContext.request.contextPath}/profil"
                                 >Mon profil</a>
                             </c:otherwise>
-                        </c:choose></li>
+                        </c:choose></li> --%>
                 </c:if>
             </ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav gap-3">
                 <c:choose>
                     <c:when test="${not empty sessionScope.utilisateur}">
+                        <li class="nav-item"><a
+                            class="nav-link"
+                            href="${pageContext.request.contextPath}/panier"
+                        > <i class="fa-solid fa-cart-shopping"></i> <span
+                                class="position-relative"
+                            > Panier<span
+                                    class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger"
+                                > <c:choose>
+                                            <c:when
+                                                test="${not empty sessionScope.panier}"
+                                            >
+                                            ${fn:length(sessionScope.panier)}
+                                        </c:when>
+                                            <c:otherwise>0</c:otherwise>
+                                        </c:choose>
+                                </span></span>
+                        </a></li>
                         <li class="nav-item dropdown"><a
                             class="nav-link dropdown-toggle d-flex gap-2 align-items-center"
                             href="#" role="button"
