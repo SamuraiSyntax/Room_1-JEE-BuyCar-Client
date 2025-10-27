@@ -51,7 +51,7 @@
                                         <li><strong>Description
                                                 :</strong> ${v.description}</li>
                                         <li><strong>Date
-                                                d'ajout :</strong> ${v.dateAjout}</li>
+                                                d'ajout :</strong> ${v.dateAjoutFormatee}</li>
                                     </ul>
                                     <div class="text-end mt-3">
                                         <a

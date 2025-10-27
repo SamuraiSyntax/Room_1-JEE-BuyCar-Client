@@ -1,6 +1,7 @@
 package org.eclipse.models;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Voiture {
 	private int idVoiture;
@@ -102,6 +103,13 @@ public class Voiture {
 
 	public LocalDateTime getDateAjout() {
 		return dateAjout;
+	}
+
+	public String getDateAjoutFormatee() {
+		if (dateAjout == null)
+			return "—";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy 'à' HH:mm");
+		return dateAjout.format(formatter);
 	}
 
 	public void setDateAjout(LocalDateTime dateAjout) {
