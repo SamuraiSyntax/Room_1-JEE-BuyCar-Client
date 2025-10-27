@@ -71,7 +71,7 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 		Connection connection = MySqlConnection.getConnection();
 		if (connection != null) {
 			try {
-				String insert = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?)";
+				String insert = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, id_role) VALUES (?, ?, ?, ?, ?)";
 
 				PreparedStatement statement = connection.prepareStatement(insert,
 						PreparedStatement.RETURN_GENERATED_KEYS);
@@ -79,6 +79,7 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 				statement.setString(2, model.getPrenom());
 				statement.setString(3, model.getEmail());
 				statement.setString(4, model.getPassword());
+				statement.setInt(5, model.getRole());
 
 				statement.executeUpdate();
 				ResultSet result = statement.getGeneratedKeys();
@@ -92,7 +93,6 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 			}
 		}
 		return null;
-
 	}
 
 	@Override
@@ -111,17 +111,17 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 		Connection connection = MySqlConnection.getConnection();
 		if (connection != null) {
 			try {
-				String sql = "SELECT * FROM utilisateur WHERE email = ? AND motDePasse = ?";
+				String sql = "SELECT * FROM utilisateur WHERE email = ? AND mot_de_passe = ?";
 				PreparedStatement statement = connection.prepareStatement(sql);
 				statement.setString(1, email);
 				statement.setString(2, motDePasse);
 				ResultSet resultSet = statement.executeQuery();
 
 				if (resultSet.next()) {
-					int id = resultSet.getInt("id");
+					int id = resultSet.getInt("id_user");
 					String nom = resultSet.getString("nom");
 					String prenom = resultSet.getString("prenom");
-					String motDePasseDb = resultSet.getString("motDePasse");
+					String motDePasseDb = resultSet.getString("mot_de_passe");
 
 					return new Utilisateur(id, nom, prenom, email, motDePasseDb);
 				}

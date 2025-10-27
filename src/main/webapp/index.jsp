@@ -6,6 +6,7 @@
 <title>BuyCar - Connexion / Inscription</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
+    <c:import url="/WEB-INF/partial/_menu.jsp"></c:import>
     <main class="container mt-5">
         <h1 class="mb-4 text-center fw-bold">Bienvenue sur BuyCar</h1>
         <!-- Onglets -->
@@ -111,5 +112,6 @@
             </div>
         </div>
     </main>
+    <c:import url="/WEB-INF/partial/_footer.jsp"></c:import>
 </body>
 </html>
