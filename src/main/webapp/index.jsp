@@ -105,11 +105,11 @@
                     </div>
                     <button type="submit" class="btn btn-success w-100">Créer
                         un compte</button>
-                    <c:if test="${not empty errorMessage}">
-                        <div class="alert alert-danger mt-3">${errorMessage}</div>
-                    </c:if>
                 </form>
             </div>
+            <c:if test="${not empty erreur}">
+                <div class="alert alert-danger mt-3">${erreur}</div>
+            </c:if>
         </div>
     </main>
     <c:import url="/WEB-INF/partial/_footer.jsp"></c:import>
