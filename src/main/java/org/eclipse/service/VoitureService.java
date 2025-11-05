@@ -46,6 +46,29 @@ public class VoitureService {
 	 //
 	 // return filtred.subList(from, to);
 	 // }
+	 
+	 public List<VoitureDto> search(String marque, String modele, Double prixMin,
+			   Double prixMax, String sort) {
+			  List<VoitureDto> voitures = findAll();
+
+			  return voitures.stream()
+			    .filter(v -> marque == null || marque.isBlank()
+			      || v.getMarque().toLowerCase()
+			        .contains(marque.toLowerCase()))
+			    .filter(v -> modele == null || modele.isBlank()
+			      || v.getModele().toLowerCase()
+			        .contains(modele.toLowerCase()))
+			    .filter(v -> (prixMin == null || v.getPrix() >= prixMin))
+			    .filter(v -> (prixMax == null || v.getPrix() <= prixMax))
+			    .sorted((v1, v2) -> {
+			     if ("prixAsc".equals(sort))
+			      return Double.compare(v1.getPrix(), v2.getPrix());
+			     if ("prixDesc".equals(sort))
+			      return Double.compare(v2.getPrix(), v1.getPrix());
+			     return 0; // pas de tri par défaut
+			    }).toList();
+			 }
+	 
 
 	 public VoitureDto findById(int id) {
 	  Voiture voiture = dao.findAll().stream()

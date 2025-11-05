@@ -71,15 +71,16 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 		Connection connection = MySqlConnection.getConnection();
 		if (connection != null) {
 			try {
-				String insert = "INSERT INTO Utilisateur (nom, prenom, email, mot_de_passe, id_role) VALUES (?, ?, ?, ?, ?)";
+				String insert = "INSERT INTO Utilisateur (nom, prenom, nom_compte, email, mot_de_passe, id_role) VALUES (?, ?, ?, ?, ?, ?)";
 
 				PreparedStatement statement = connection.prepareStatement(insert,
 						PreparedStatement.RETURN_GENERATED_KEYS);
 				statement.setString(1, model.getNom());
 				statement.setString(2, model.getPrenom());
-				statement.setString(3, model.getEmail());
-				statement.setString(4, model.getPassword());
-				statement.setInt(5, 2);
+				statement.setString(3, model.getCompte());
+				statement.setString(4, model.getEmail());
+				statement.setString(5, model.getPassword());
+				statement.setInt(6, 2);
 
 				statement.executeUpdate();
 				ResultSet result = statement.getGeneratedKeys();
@@ -122,13 +123,38 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 					String nom = resultSet.getString("nom");
 					String prenom = resultSet.getString("prenom");
 					String motDePasseDb = resultSet.getString("mot_de_passe");
+					int role = resultSet.getInt("id_role");
 
-					return new Utilisateur(id, nom, prenom, email, motDePasseDb);
+					return new Utilisateur(id, nom, null, prenom, email, motDePasseDb, role, null);
 				}
 			} catch (Exception e) {
 				System.err.println("Erreur lors de la recherche de l'utilisateur : " + e.getMessage());
 			}
 		}
 		return null;
+	}
+	public Utilisateur findByEmail(String email) {
+	    Connection connection = MySqlConnection.getConnection();
+	    if (connection != null) {
+	        try {
+	            String sql = "SELECT * FROM Utilisateur WHERE email = ?";
+	            PreparedStatement statement = connection.prepareStatement(sql);
+	            statement.setString(1, email);
+	            ResultSet resultSet = statement.executeQuery();
+	            if (resultSet.next()) {
+	                int id = resultSet.getInt("id_user");
+	                String nom = resultSet.getString("nom");
+	                String prenom = resultSet.getString("prenom");
+	                String compte = resultSet.getString("nom_compte");
+	                String motDePasseDb = resultSet.getString("mot_de_passe");
+	                int role = resultSet.getInt("id_role");
+	                String telephone = resultSet.getString("telephone");
+	                return new Utilisateur(id, nom, prenom, compte, email, motDePasseDb, role, telephone);
+	            }
+	        } catch (Exception e) {
+	            System.err.println("Erreur findByEmail : " + e.getMessage());
+	        }
+	    }
+	    return null;
 	}
 }

@@ -9,6 +9,27 @@
     <c:import url="/WEB-INF/partial/_menu.jsp"></c:import>
     <main class="container my-5 flex-grow-1">
         <h1 class="mb-4 text-center fw-bold">Liste des voitures</h1>
+        <div class="mb-4">
+            <form method="get" action="${pageContext.request.contextPath}/accueil" class="row g-2">
+                 <div class="mb-4">
+            <form method="get" action="${pageContext.request.contextPath}/accueil" class="row g-2">
+                <div class="col-md-3">
+                    <input type="text" name="marque" class="form-control" placeholder="Marque" value="${param.marque}">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="modele" class="form-control" placeholder="Modèle" value="${param.modele}">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" step="0.01" min="0" name="prixMin" class="form-control" placeholder="Prix min" value="${param.prixMin}">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" step="0.01" min="0" name="prixMax" class="form-control" placeholder="Prix max" value="${param.prixMax}">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Rechercher</button>
+                </div>
+            </form>
+        </div>
         <c:choose>
             <c:when test="${not empty voitures}">
                 <div class="accordion" id="voituresAccordion">

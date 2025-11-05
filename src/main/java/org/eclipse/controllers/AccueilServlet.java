@@ -26,10 +26,35 @@ public class AccueilServlet extends HttpServlet {
 		request.setAttribute("utilisateur", u);
 
 	
-		VoitureService voitureService = new VoitureService();
-		List<VoitureDto> voitures = voitureService.findAll();
+//		VoitureService voitureService = new VoitureService();
+//		List<VoitureDto> voitures = voitureService.findAll();
+		
+		String marque = request.getParameter("marque");
+		  String modele = request.getParameter("modele");
+		  String prixMinStr = request.getParameter("prixMin");
+		  String prixMaxStr = request.getParameter("prixMax");
 
+		  Double prixMin = null;
+		  Double prixMax = null;
 
+		  try {
+		   if (prixMinStr != null && !prixMinStr.isBlank())
+		    prixMin = Double.parseDouble(prixMinStr);
+		  } catch (NumberFormatException e) {
+		   e.printStackTrace();
+		  }
+
+		  try {
+		   if (prixMaxStr != null && !prixMaxStr.isBlank())
+		    prixMax = Double.parseDouble(prixMaxStr);
+		  } catch (NumberFormatException e) {
+		   e.printStackTrace();
+		  }
+
+		  VoitureService voitureService = new VoitureService();
+		  List<VoitureDto> voitures = voitureService.search(marque, modele,
+		    prixMin, prixMax, null);
+	
 		request.setAttribute("voitures", voitures);
 
 		request.getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
