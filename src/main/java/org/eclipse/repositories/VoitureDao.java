@@ -20,7 +20,7 @@ public class VoitureDao implements GenericDao<Voiture, Integer> {
 
 		if (connection != null) {
 			try {
-				String query = "SELECT * FROM voiture";
+				String query = "SELECT * FROM Voiture";
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(query);
 
@@ -40,7 +40,7 @@ public class VoitureDao implements GenericDao<Voiture, Integer> {
 		Connection connection = MySqlConnection.getConnection();
 		if (connection != null) {
 			try {
-				String query = "SELECT * FROM voiture WHERE id_voiture = ?";
+				String query = "SELECT * FROM Voiture WHERE id_voiture = ?";
 				PreparedStatement ps = connection.prepareStatement(query);
 				ps.setInt(1, id);
 				ResultSet rs = ps.executeQuery();
@@ -62,7 +62,7 @@ public class VoitureDao implements GenericDao<Voiture, Integer> {
 
 		if (connection != null) {
 			try {
-				String query = "INSERT INTO voiture (reference, marque, modele, annee, couleur, prix, description, id_categorie) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				String query = "INSERT INTO Voiture (reference, marque, modele, annee, couleur, prix, description, id_categorie) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 				ps.setString(1, v.getReference());
@@ -95,7 +95,7 @@ public class VoitureDao implements GenericDao<Voiture, Integer> {
 
 		if (connection != null) {
 			try {
-				String query = "UPDATE voiture SET reference = ?, marque = ?, modele = ?, annee = ?, couleur = ?, prix = ?, description = ?, id_categorie = ? WHERE id_voiture = ?";
+				String query = "UPDATE Voiture SET reference = ?, marque = ?, modele = ?, annee = ?, couleur = ?, prix = ?, description = ?, id_categorie = ? WHERE id_voiture = ?";
 				PreparedStatement ps = connection.prepareStatement(query);
 
 				ps.setString(1, v.getReference());
@@ -125,7 +125,7 @@ public class VoitureDao implements GenericDao<Voiture, Integer> {
 
 		if (connection != null) {
 			try {
-				String query = "DELETE FROM voiture WHERE id_voiture = ?";
+				String query = "DELETE FROM Voiture WHERE id_voiture = ?";
 				PreparedStatement ps = connection.prepareStatement(query);
 				ps.setInt(1, id);
 
