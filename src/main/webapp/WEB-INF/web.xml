@@ -16,4 +16,24 @@
 			<include-prelude>/WEB-INF/jstl.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
+	
+		<servlet>
+		<servlet-name>jakarta-rest</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<!-- ton package REST -->
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>org.eclipse.rest</param-value>
+		</init-param>
+		<!--activer @RolesAllowed  -->
+<!-- 		<init-param> -->
+<!-- 		<param-name>jersey.config.server.provider.classnames</param-name> -->
+<!-- 		<param-value>org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature</param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<load-on-startup>1</load-on-startup> -->
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jakarta-rest</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
 </web-app>

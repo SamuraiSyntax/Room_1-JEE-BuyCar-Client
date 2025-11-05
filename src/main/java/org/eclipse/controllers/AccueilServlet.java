@@ -3,9 +3,11 @@ package org.eclipse.controllers;
 import java.io.IOException;
 import java.util.List;
 
+import org.eclipse.dto.VoitureDto;
 import org.eclipse.models.Utilisateur;
 import org.eclipse.models.Voiture;
 import org.eclipse.repositories.VoitureDao;
+import org.eclipse.service.VoitureService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,8 +25,10 @@ public class AccueilServlet extends HttpServlet {
 		Utilisateur u = (Utilisateur) request.getSession().getAttribute("utilisateur");
 		request.setAttribute("utilisateur", u);
 
-		VoitureDao voitureDao = new VoitureDao();
-		List<Voiture> voitures = voitureDao.findAll();
+	
+		VoitureService voitureService = new VoitureService();
+		List<VoitureDto> voitures = voitureService.findAll();
+
 
 		request.setAttribute("voitures", voitures);
 

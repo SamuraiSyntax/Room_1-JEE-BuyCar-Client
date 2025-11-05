@@ -19,7 +19,7 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 		if (connection != null) {
 			try {
 				Statement statement = connection.createStatement();
-				String select = "SELECT * FROM utilisateur";
+				String select = "SELECT * FROM Utilisateur";
 				ResultSet resultSet = statement.executeQuery(select);
 				utilisateurs = new ArrayList<Utilisateur>();
 				while (resultSet.next()) {
@@ -45,7 +45,7 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 		Connection connection = MySqlConnection.getConnection();
 		if (connection != null) {
 			try {
-				String select = "SELECT * FROM utilisateur WHERE id = ?";
+				String select = "SELECT * FROM Utilisateur WHERE id = ?";
 				PreparedStatement statement = connection.prepareStatement(select);
 				statement.setInt(1, id);
 				ResultSet resultSet = statement.executeQuery();
@@ -71,7 +71,7 @@ public class UtilisateurDao implements GenericDao<Utilisateur, Integer> {
 		Connection connection = MySqlConnection.getConnection();
 		if (connection != null) {
 			try {
-				String insert = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, id_role) VALUES (?, ?, ?, ?, ?)";
+				String insert = "INSERT INTO Utilisateur (nom, prenom, email, mot_de_passe, id_role) VALUES (?, ?, ?, ?, ?)";
 
 				PreparedStatement statement = connection.prepareStatement(insert,
 						PreparedStatement.RETURN_GENERATED_KEYS);
